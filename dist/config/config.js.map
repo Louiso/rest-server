@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../server/config/config.js"],"names":["process","env","PORT"],"mappings":";;AAAAA,QAAQC,GAAR,CAAYC,IAAZ,GAAmBF,QAAQC,GAAR,CAAYC,IAAZ,IAAoB,IAAvC","file":"config.js","sourcesContent":["process.env.PORT = process.env.PORT || 3000;"]}

@@ -1,0 +1,21 @@
+{
+  "name": "rest-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Louiso <Gransullca.25@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon bin/dev",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && mkdir dist && babel server -s -d dist",
+    "prod": "npm run build && node bin/prod"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
