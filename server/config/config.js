@@ -22,3 +22,15 @@ if(process.env.NODE_ENV === 'dev'){
 }
 
 process.env.URLDB = urlDB;
+
+// ====================
+// Fecha de expiracion
+// ====================
+
+process.env.EXP = 60 * 60 * 24 * 30;
+
+// ====================
+// Seed de Jwt
+// ====================
+
+process.env.SEED = process.env.SEED || 'este-es-mi-seed-desarrollo';

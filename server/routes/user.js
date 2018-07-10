@@ -5,10 +5,11 @@ import User from '../models/user';
 import bcrypt from 'bcrypt';
 
 import _ from 'underscore';
+import { verifyToken , verificaADMIN_ROLE } from '../middlewares/auth';
 
 const userRoute = Router();
 
-userRoute.get('/usuario', (req, res) => {
+userRoute.get('/usuario', verifyToken, (req, res) => {
 
   const from = Number(req.query.from) || 0;
   const limit = Number(req.query.limit) || 5;
@@ -37,7 +38,8 @@ userRoute.get('/usuario', (req, res) => {
     });
 });
 
-userRoute.post('/usuario', (req, res) => {
+/* Solo los que estan loggeados pueden crear usuarios y si tienen ADMIN_ROLE */
+userRoute.post('/usuario', [verifyToken,verificaADMIN_ROLE], (req, res) => {
   const {
     body
   } = req;
@@ -59,10 +61,10 @@ userRoute.post('/usuario', (req, res) => {
   
 });
 
-userRoute.put('/usuario/:id', (req, res) => {
+userRoute.put('/usuario/:id', [verifyToken,verificaADMIN_ROLE],  (req, res) => {
   
   const id = req.params.id;
-  const body = _.pick(req.body, ['nombre','email','img','role','estado']);
+  const body = _.pick(req.body, ['username','email','img','role','estado']);
 
   User.findByIdAndUpdate(id, body, { new: true, runValidators : true } ,(err, userDB)=>{
     if(err){
@@ -78,7 +80,7 @@ userRoute.put('/usuario/:id', (req, res) => {
   });
 });
 
-userRoute.delete('/usuario/:id', (req, res) => {
+userRoute.delete('/usuario/:id', [verifyToken,verificaADMIN_ROLE], (req, res) => {
   
   const { id } = req.params;
 

@@ -1,22 +1,12 @@
 import './config/config';
-import express from 'express';
-import bodyParser from 'body-parser';
+
 import mongoose from 'mongoose';
-import userRoute from './routes/user';
 
-const app = express();
-
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-
-app.use(bodyParser.json());
-
-app.use(userRoute);
+import app from './app';
 
 mongoose.connect(process.env.URLDB, {
   useNewUrlParser: true
-}, (err/* , res */) => {
+}, (err) => {
 
   if(err) throw err;
   
