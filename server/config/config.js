@@ -34,3 +34,10 @@ process.env.EXP = 60 * 60 * 24 * 30;
 // ====================
 
 process.env.SEED = process.env.SEED || 'este-es-mi-seed-desarrollo';
+
+
+// ====================
+// Google Client ID
+// ====================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '745772771794-9481d3qbpnf68ogja6ftk6hileqtorgh.apps.googleusercontent.com';
